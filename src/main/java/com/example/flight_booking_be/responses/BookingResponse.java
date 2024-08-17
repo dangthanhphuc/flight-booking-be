@@ -1,7 +1,6 @@
 package com.example.flight_booking_be.responses;
 
 import com.example.flight_booking_be.entities.Booking;
-import com.example.flight_booking_be.entities.Passenger;
 import com.example.flight_booking_be.enums.BookingStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
@@ -37,7 +36,7 @@ public class BookingResponse {
 
     private FlightResponse flight;
 
-    private PassengerResponse passenger;
+    private UserResponse user;
 
     @JsonProperty("seat_class")
     private SeatClassResponse seatClass;
@@ -52,7 +51,7 @@ public class BookingResponse {
                 .lastName(booking.getLastName())
                 .dateOfBirth(booking.getDateOfBirth())
                 .flight(FlightResponse.fromFlight(booking.getFlight()))
-                .passenger(PassengerResponse.fromPassenger(booking.getPassenger()))
+                .user(UserResponse.fromUser(booking.getUser()))
                 .seatClass(SeatClassResponse.fromSeatClass(booking.getSeatClass()))
                 .build();
     }
