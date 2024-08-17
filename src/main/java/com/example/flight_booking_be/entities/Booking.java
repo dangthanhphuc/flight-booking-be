@@ -3,7 +3,6 @@ package com.example.flight_booking_be.entities;
 
 import com.example.flight_booking_be.enums.BookingStatus;
 import jakarta.persistence.*;
-import jdk.jshell.Snippet;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -48,8 +47,8 @@ public class Booking {
     private String citizenIdentification;
 
     @ManyToOne()
-    @JoinColumn(name = "passenger_id", nullable = false)
-    private Passenger passenger;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne()
     @JoinColumn(name = "flight_id", nullable = false)
