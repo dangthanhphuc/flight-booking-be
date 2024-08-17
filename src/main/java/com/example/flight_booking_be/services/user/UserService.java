@@ -9,6 +9,7 @@ import com.example.flight_booking_be.exception.ErrorCode;
 import com.example.flight_booking_be.repositories.UserRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class userService {
+public class UserService {
     @Autowired
     UserRepo userRepository;
     PasswordEncoder passwordEncoder;
@@ -30,11 +31,11 @@ public class userService {
         }
 
         user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setDob(request.getDob());
 
+        passwordEncoder = new BCryptPasswordEncoder(5);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         HashSet<String> roles = new HashSet<>();

@@ -6,14 +6,9 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 public class UserDetail extends User {
-    private final String userId;
 
-    public UserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities, String userId){
+    public UserDetail(String username, String password, Collection<? extends GrantedAuthority> authorities){
         super(username, password, authorities);
-        this.userId = userId;
     }
 
-    public String getUserId(){
-        return userId;
-    }
 }

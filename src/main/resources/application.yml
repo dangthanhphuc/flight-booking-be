@@ -31,3 +31,6 @@ spring:
         flyway:
                 locations:
                 baseline-on-migrate: true
+
+jwt:
+        signerKey: "KVdIiyZVexqccDj24ApEQVu9bHAr+EPAi2yshfJaOdJmWo3Ws1db75SuVlOC5AMn"
