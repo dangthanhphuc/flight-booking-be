@@ -5,5 +5,7 @@ import com.example.flight_booking_be.entities.Flight;
 import java.util.List;
 
 public interface IFlightService {
+
+    List<Flight> getAll();
     List<Flight> getFlightsFollowPlace(Long fromAirportId, Long toAirportId);
 }

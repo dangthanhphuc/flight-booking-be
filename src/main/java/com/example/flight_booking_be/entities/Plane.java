@@ -18,9 +18,6 @@ public class Plane {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    private String type;
-
     @Column(name = "plane_code", nullable = false)
     private String planeCode;
 

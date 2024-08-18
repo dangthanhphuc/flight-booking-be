@@ -11,8 +11,10 @@ import lombok.*;
 @Builder
 public class AirportResponse {
 
-    @JsonProperty("airport_code")
-    private String airportCode;
+    private Long id;
+
+    @JsonProperty("country_code")
+    private String countryCode;
 
     private String name;
 
@@ -26,7 +28,8 @@ public class AirportResponse {
 
     public static AirportResponse fromAirport(Airport airport) {
         return AirportResponse.builder()
-                .airportCode(airport.getAirportCode())
+                .id(airport.getId())
+                .countryCode(airport.getCountryCode())
                 .name(airport.getName())
                 .country(airport.getCountry())
                 .city(airport.getCity())

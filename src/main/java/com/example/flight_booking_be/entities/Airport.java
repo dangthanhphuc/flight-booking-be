@@ -15,8 +15,8 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "airport_code", nullable = false)
-    private String airportCode;
+    @Column(name = "country_code", nullable = false)
+    private String countryCode;
 
     @Column(nullable = false)
     private String name;
