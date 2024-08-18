@@ -22,6 +22,30 @@ public class FlightController {
 
     private final IFlightService flightService;
 
+    @GetMapping("")
+    private ResponseEntity<Response<List<FlightResponse>>> getFlights() {
+        List<Flight> flights = flightService.getAll();
+
+        Response<List<FlightResponse>> response;
+        if(flights.isEmpty()) {
+
+            response = new Response<>(
+                    "Flights not found !",
+                    HttpStatus.NOT_FOUND.value(),
+                    null
+            );
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
+        }
+
+        response = new Response<>(
+                "Flights get successfully !",
+                HttpStatus.OK.value(),
+                flights.stream().map(FlightResponse::fromFlight).toList()
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
+
     @GetMapping("/search")
     private ResponseEntity<Response<List<FlightResponse>>> getFlightsFollowPlace(
             @RequestParam(name = "from_airport_id") Long fromAirportId,
@@ -45,7 +69,10 @@ public class FlightController {
                 HttpStatus.OK.value(),
                 flights.stream().map(FlightResponse::fromFlight).toList()
         );
+
         return ResponseEntity.ok().body(response);
     }
+
+
 
 }

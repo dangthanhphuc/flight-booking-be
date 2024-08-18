@@ -21,12 +21,14 @@ public class User {
     private Long id;
 
     private String username;
+
     private String password;
 
     @Column(name = "first_name")
     private String firstName;
 
     private LocalDate dob;
+
     Set<String> roles;
 
     @Column(name = "last_name")

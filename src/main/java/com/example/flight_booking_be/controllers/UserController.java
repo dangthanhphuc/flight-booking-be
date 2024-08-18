@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -28,8 +30,14 @@ public class UserController {
     UserService userService;
 
     @PostMapping("/create-users")
-    Response<UserResponse> createUser(@RequestBody @Valid UserCreationDTO request){
+    Response<UserResponse> createUser(@RequestBody @Valid UserCreationDTO request) throws IOException {
+
+        if(!Objects.equals(request.getPassword(), request.getRetypePassword())) {
+            throw new IOException("Password and retype password not match !");
+        }
+
         Response<UserResponse> apiResponse = new Response<>();
+
         User user = userService.createRequest(request);
 
         apiResponse.setData(UserResponse.fromUser(user));
