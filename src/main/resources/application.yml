@@ -29,5 +29,6 @@ spring:
 
                 database-platform: org.hibernate.dialect.MySQLDialect
         flyway:
-                locations:
+                locations: classpath:/db/migration, classpath:/dev/db/migration
+
                 baseline-on-migrate: true

@@ -24,8 +24,8 @@ public class FlightController {
 
     @GetMapping("/search")
     private ResponseEntity<Response<List<FlightResponse>>> getFlightsFollowPlace(
-            @RequestParam Long fromAirportId,
-            @RequestParam Long toAirportId
+            @RequestParam(name = "from_airport_id") Long fromAirportId,
+            @RequestParam(name = "to_airport_id") Long toAirportId
     ) {
         List<Flight> flights = flightService.getFlightsFollowPlace(fromAirportId, toAirportId);
 

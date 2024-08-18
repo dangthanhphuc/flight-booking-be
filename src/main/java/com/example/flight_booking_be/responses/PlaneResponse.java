@@ -24,7 +24,6 @@ public class PlaneResponse {
     public static PlaneResponse fromPlane(Plane plane) {
         return PlaneResponse.builder()
                 .name(plane.getName())
-                .type(plane.getType())
                 .planeCode(plane.getPlaneCode())
                 .seatCapacity(plane.getSeatCapacity())
                 .build();
