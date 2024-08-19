@@ -2,6 +2,7 @@ package com.example.flight_booking_be.exception;
 
 
 import com.example.flight_booking_be.dtos.ApiResponse;
+import com.example.flight_booking_be.responses.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,12 +24,12 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = AppException.class)
-    ResponseEntity<ApiResponse> handlingAppException(AppException exception){
+    ResponseEntity<Response<String>> handlingAppException(AppException exception){
         //ErrorCode errorCode = exception.getErrorCode();
         ErrorCode errorCode = exception.getErrorCode();
-        ApiResponse apiResponse = new ApiResponse();
+        Response<String> apiResponse = new Response();
 
-        apiResponse.setCode(errorCode.getCode());
+        apiResponse.setStatus(errorCode.getCode());
         apiResponse.setMessage(errorCode.getMessgae());
 
         return ResponseEntity.badRequest().body(apiResponse);
