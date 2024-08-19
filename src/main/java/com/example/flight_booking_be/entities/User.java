@@ -20,6 +20,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -37,10 +38,12 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-
     private String email;
 
     @Column(name = "citizen_identification")
     private String citizenIdentification;
+
+    @Column(columnDefinition = "bit(1) default 1")
+    private boolean gender;
 
 }

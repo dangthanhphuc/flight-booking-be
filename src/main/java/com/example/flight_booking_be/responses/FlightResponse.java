@@ -66,6 +66,7 @@ public class FlightResponse {
                 .specialPrice(flight.getSpecialPrice())
                 .fromAirport(AirportResponse.fromAirport(flight.getFromAirport()))
                 .toAirport(AirportResponse.fromAirport(flight.getToAirport()))
+                .plane(PlaneResponse.fromPlane(flight.getPlane()))
                 .build();
     }
 

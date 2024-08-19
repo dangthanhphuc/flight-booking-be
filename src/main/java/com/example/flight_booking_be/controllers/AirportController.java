@@ -43,7 +43,6 @@ public class AirportController {
     public ResponseEntity<?> viewImage(
             @PathVariable String imageName
     ) {
-
         try {
             Path imagePath = Paths.get("images/" + imageName );
             UrlResource resource = new UrlResource(imagePath.toUri());
@@ -61,7 +60,6 @@ public class AirportController {
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
-
     }
 
 }

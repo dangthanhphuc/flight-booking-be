@@ -26,6 +26,8 @@ public class UserCreationDTO {
     @JsonProperty("last_name")
     private String lastName;
 
+    private boolean gender;
+
     private LocalDate dob;
 
 }
