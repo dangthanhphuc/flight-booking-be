@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponse {
-    private String id;
+    private Long id;
     private String username;
 
     @JsonProperty("first_name")
@@ -35,11 +35,15 @@ public class UserResponse {
 
     public static UserResponse fromUser(User user) {
         return UserResponse.builder()
+                .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .dob(user.getDob())
                 .citizenIdentification(user.getCitizenIdentification())
                 .build();
     }
+
+
 }

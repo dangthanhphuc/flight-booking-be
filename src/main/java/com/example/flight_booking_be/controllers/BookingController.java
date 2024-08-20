@@ -8,10 +8,7 @@ import com.example.flight_booking_be.services.booking.IBookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,19 @@ public class BookingController {
 
         return ResponseEntity.ok().body(response);
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<Response<List<BookingResponse>>> getByUserId(@PathVariable("userId") Long userId){
+        List<Booking> bookingList = bookingService.getByUserId(userId);
+
+        Response<List<BookingResponse>> response = new Response<> (
+                "Bookings is successfully !",
+                HttpStatus.OK.value(),
+                bookingList.stream().map(BookingResponse::fromBooking).toList()
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
+
 
 }

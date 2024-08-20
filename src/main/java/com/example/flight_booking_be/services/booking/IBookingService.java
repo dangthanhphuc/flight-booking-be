@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IBookingService {
     List<Booking> booking(BookingDTO bookingDTO);
-
+    List<Booking> getByUserId(Long userId);
 }

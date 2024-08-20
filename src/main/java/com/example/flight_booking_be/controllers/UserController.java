@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,6 +45,20 @@ public class UserController {
 
         return apiResponse;
     }
+
+    @GetMapping("/get-users-by-username/{username}")
+    Response<UserResponse> getUserByUsername(@PathVariable("username") String username){
+        User user = userService.findByUsername(username);
+
+        Response<UserResponse> apiResponse = new Response<>();
+        apiResponse.setStatus(HttpStatus.OK.value());
+        apiResponse.setMessage("Get users by username successfully !");
+        apiResponse.setData(UserResponse.fromUser(user));
+
+        return apiResponse;
+    }
+
+
 
     @GetMapping("/get-users")
     ApiResponse<List<User>> getUsers(){
