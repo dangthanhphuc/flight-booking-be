@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -68,5 +69,11 @@ public class UserService {
 
     public void deleteUser(Long userId){
         userRepository.deleteById(userId);
+    }
+
+    public User findByUsername(String username){
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+        return user;
     }
 }

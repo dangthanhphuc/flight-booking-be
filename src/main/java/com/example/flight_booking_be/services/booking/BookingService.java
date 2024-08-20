@@ -40,7 +40,10 @@ public class BookingService implements IBookingService{
         return bookingRepo.saveAll(bookings);
     }
 
-
+    @Override
+    public List<Booking> getByUserId(Long userId) {
+        return bookingRepo.findByUserId(userId);
+    }
 
 
 }
